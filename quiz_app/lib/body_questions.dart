@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'answer_button.dart';
 
-
 class BodyQuestions extends StatelessWidget {
     final questions;
     final int questionIdx;
-    final Function() nextQuestion;
+    final Function nextQuestion;
 
     BodyQuestions({
         this.questions,
@@ -23,7 +22,6 @@ class BodyQuestions extends StatelessWidget {
         );
 
         var options = questions[questionIdx]['options'] as List<String>;
-
         var answerOptions = options.map((String option) {
             return AnswerButton(text: option, nextQuestion: nextQuestion);
         });
@@ -40,7 +38,7 @@ class BodyQuestions extends StatelessWidget {
                         width: double.infinity,
                         child: ElevatedButton(
                             child: Text('Skip Question'),
-                            onPressed: nextQuestion,
+                            onPressed: () => nextQuestion(null),
                             style: ElevatedButton.styleFrom(
                                 primary: Colors.green
                             )

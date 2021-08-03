@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'body_questions.dart';
+import 'body_answer.dart';
 
 void main() {
   runApp(App());
@@ -14,6 +15,8 @@ class App extends StatefulWidget {
 //State object associated with it can now contain data and return the widget tree
 class AppState extends State<App>{
     int questionIdx = 0;
+    bool showAnswers = false;
+
     final questions = [
         {
             'question':'What is the nature of you business needs?',
@@ -33,14 +36,27 @@ class AppState extends State<App>{
         }
     ];
 
-    void nextQuestion() {
-        setState(() => questionIdx++);
+    var answers = [];
+
+    void nextQuestion(String answer) {
+        answers.add({
+            'question': questions[questionIdx]['question'],
+            'answer':(answer==null)? '': answer
+        });
+        print(answer);
+
+        if(questionIdx < questions.length - 1){
+            setState(() => questionIdx++);
+        } else {
+            setState(() => showAnswers = true);
+        }
     }
 
     @override
     Widget build(BuildContext context) {
         
         var bodyQuestions = BodyQuestions(questions: questions, questionIdx: questionIdx, nextQuestion: nextQuestion);
+        var bodyAnswers = BodyAnswers(answers: answers);
 
 
         Scaffold homepage = Scaffold(
@@ -48,7 +64,7 @@ class AppState extends State<App>{
                 title: Text('Quiz'),
                 backgroundColor: Colors.green,
             ),
-            body: bodyQuestions
+            body: (showAnswers) ? bodyAnswers : bodyQuestions
         );
         return MaterialApp(
             home: homepage
