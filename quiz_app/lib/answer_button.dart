@@ -16,7 +16,12 @@ class AnswerButton extends StatelessWidget {
             value: text,
             groupValue: null,
             onChanged: (value) {
-
+                Widget snackBar = SnackBar(
+                    content: Text('You have selected $value'),
+                    duration: Duration(milliseconds: 2000)
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                nextQuestion(value);
             }
         );
     }
