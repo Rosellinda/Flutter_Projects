@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'body_questions.dart';
 
 void main() {
   runApp(App());
@@ -38,39 +39,16 @@ class AppState extends State<App>{
 
     @override
     Widget build(BuildContext context) {
-        Widget questionText = Text(
-            questions[questionIdx]['question'].toString(),
-            style: TextStyle(
-                fontSize: 24.0
-            )
-        );
+        
+        var bodyQuestions = BodyQuestions(questions: questions, questionIdx: questionIdx, nextQuestion: nextQuestion);
 
-        Container body = Container(
-            width: double.infinity,
-            padding: EdgeInsets.all(16),
-            child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                    questionText,
-                    Container(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                            child: Text('Skip Question'),
-                            onPressed: nextQuestion,
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors.green
-                            )
-                        )
-                    )
-                ]
-            )
-        );
+
         Scaffold homepage = Scaffold(
             appBar: AppBar(
                 title: Text('Quiz'),
                 backgroundColor: Colors.green,
             ),
-            body: body
+            body: bodyQuestions
         );
         return MaterialApp(
             home: homepage
