@@ -5,8 +5,8 @@ class AnswerButton extends StatelessWidget {
     final Function nextQuestion;
 
     AnswerButton({
-        this.text,
-        this.nextQuestion
+        required this.text,
+        required this.nextQuestion
     });
 
     @override
@@ -16,7 +16,7 @@ class AnswerButton extends StatelessWidget {
             value: text,
             groupValue: null,
             onChanged: (value) {
-                Widget snackBar = SnackBar(
+                SnackBar snackBar = SnackBar(
                     content: Text('You have selected $value'),
                     duration: Duration(milliseconds: 2000)
                 );

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class BodyAnswers extends StatelessWidget {
     final answers;
 
-    BodyAnswers({this.answers});
+    BodyAnswers({required this.answers});
 
     @override
     Widget build(BuildContext context) {

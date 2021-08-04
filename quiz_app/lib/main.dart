@@ -38,7 +38,7 @@ class AppState extends State<App>{
 
     var answers = [];
 
-    void nextQuestion(String answer) {
+    void nextQuestion(String? answer) {
         answers.add({
             'question': questions[questionIdx]['question'],
             'answer':(answer==null)? '': answer

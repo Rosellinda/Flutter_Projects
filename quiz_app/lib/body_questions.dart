@@ -7,9 +7,9 @@ class BodyQuestions extends StatelessWidget {
     final Function nextQuestion;
 
     BodyQuestions({
-        this.questions,
-        this.questionIdx,
-        this.nextQuestion
+        required this.questions,
+        required this.questionIdx,
+        required this.nextQuestion
     });
     
     @override
